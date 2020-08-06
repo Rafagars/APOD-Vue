@@ -18,20 +18,49 @@
         <h6>{{result.copyright}}</h6>
         <br>
         <p>{{result.description}}</p>
+        <nav class="text-center">
+            <button @click="prev()">Prev</button>
+            <button @click="next()">Next</button>
+        </nav>
     </div>
 </template>
 
 <script>
 import axios from "axios";
+const date = new Date();
 export default {
     name: 'APOD',
     data: () => ({
-        result: null
+        result: null,
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate()
     }),
+    methods: {
+        apodFetch() {
+            this.year = date.getFullYear();
+            this.month = date.getMonth() + 1;
+            this.day = date.getDate()
+            console.log(`Date: ${date}; Year: ${this.year}, Month: ${this.month}, Day: ${this.day}`);
+         
+            let url = `https://apodapi.herokuapp.com/api/?date=${this.year}-${this.month}-${this.day}`;
+            console.log(`Url: ${url}`);
+            axios.get(url).then((result) => {
+                this.result = result.data;
+            })
+            console.log(this.result);
+        },
+        prev() {
+            date.setDate(date.getDate() - 1);
+            this.apodFetch()   
+        },
+        next()  {
+            date.setDate(date.getDate() + 1);
+            this.apodFetch();
+        }
+    }, 
     created() {
-        axios.get("https://apodapi.herokuapp.com/api/").then((result) => {
-            this.result = result.data;
-        })
+        this.apodFetch();
     }
 }
 </script>
