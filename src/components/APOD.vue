@@ -31,19 +31,16 @@ const date = new Date();
 export default {
     name: 'APOD',
     data: () => ({
-        result: null,
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate()
+        result: null
     }),
     methods: {
         apodFetch() {
-            this.year = date.getFullYear();
-            this.month = date.getMonth() + 1;
-            this.day = date.getDate()
-            console.log(`Date: ${date}; Year: ${this.year}, Month: ${this.month}, Day: ${this.day}`);
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate()
+            console.log(`Date: ${date}; Year: ${year}, Month: ${month}, Day: ${day}`);
          
-            let url = `https://apodapi.herokuapp.com/api/?date=${this.year}-${this.month}-${this.day}`;
+            let url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
             console.log(`Url: ${url}`);
             axios.get(url).then((result) => {
                 this.result = result.data;
