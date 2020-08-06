@@ -21,3 +21,9 @@
 		</div>
     </footer>
 </template>
+
+<style scoped>
+    a{
+        color: gray;
+    }
+</style>

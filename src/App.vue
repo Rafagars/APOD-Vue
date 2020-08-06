@@ -29,6 +29,8 @@ export default {
   text-align: center;
   color: white;
   margin-top: 60px;
+}
+body{
   background-image: url('assets/bg.jpg');
 }
 </style>
