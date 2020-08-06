@@ -28,7 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  margin-top: 60px;
 }
 body{
   background-image: url('assets/bg.jpg');
