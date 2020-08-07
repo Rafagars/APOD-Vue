@@ -6,7 +6,7 @@
         <h5>{{result.date}}</h5>
         <div v-if="result.media_type === 'image'">
             <a :href=result.url >
-                <img :src=result.url >
+                <img :src=result.url :alt=result.title >
             </a>
         </div>
         <div v-else-if="result.media_type === 'video'" class="embed-responsive embed-responsive-16by9">

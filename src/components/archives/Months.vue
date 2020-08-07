@@ -1,9 +1,12 @@
 <template>
     <div class="container text-center">
-        <h1>Archives</h1>
+        <h1>Archives - {{ $route.params.year }}</h1>
         <div class="flexs">
             <div class="flex" v-for="(month, i) in months" :key=i>
-                <h3>{{month}}</h3>
+                <router-link :to="{ path: '/archives/' + $route.params.year + '/' + month }">
+                    <h3>{{month}}</h3>
+                    <h4>{{monthsName[i]}}</h4>
+                </router-link>
             </div>
         </div>
     </div>
@@ -12,11 +15,14 @@
 <script>
 const date = new Date();
 const thisYear = date.getFullYear();
-let months = []
+const months = []
+const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
 export default {
     name: 'Months',
     data: () => ({
-        months: months
+        months: months,
+        monthsName: monthNames
     }),
     methods: {
         setMonths(){
@@ -43,7 +49,7 @@ export default {
 }
 .flex{
     flex: 1 0 20%;
-    height: 100px;
+    height: 120px;
     background-color:#2c2f33;
     border: 2px solid#23272a;
     opacity: 0.9;

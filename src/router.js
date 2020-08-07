@@ -4,7 +4,8 @@ import VueRouter from 'vue-router'
 import APOD from "./components/APOD.vue";
 import Years from "./components/archives/Years.vue";
 import Months from "./components/archives/Months.vue";
-import Random from "./components/Random.vue"
+import Days from "./components/archives/Days.vue";
+import Random from "./components/Random.vue";
 
 Vue.use(VueRouter)
 
@@ -20,9 +21,20 @@ const routes = [
     component: Years
   },
   {
-    path: "/archives/:years",
+    path: "/archives/:year",
     name: "Months",
     component: Months
+  },
+  {
+    path: "/archives/:year/:month",
+    name: "Days",
+    component: Days
+  },
+  {
+    path: "/archives/:year/:month/:day",
+    name: "APOD",
+    component: APOD,
+    props: true
   },
   {
     path: "/random",
