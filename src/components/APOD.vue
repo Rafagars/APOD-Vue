@@ -19,26 +19,37 @@
         <br>
         <p>{{result.description}}</p>
         <nav class="text-center">
-            <button @click="prev()">Prev</button>
-            <button @click="next()">Next</button>
+            <button class="btn btn-dark" @click="prev()">Prev</button>
+            <router-link to="/archives">Archives</router-link>
+            <button class="btn btn-dark" @click="next()">Next</button>
         </nav>
     </div>
 </template>
 
 <script>
 import axios from "axios";
-const date = new Date();
+const max = new Date();
+console.log(`Max: ${max}`);
+const min = new Date('1995-06-20');
+console.log(`Max: ${max}`);
+console.log(`Min: ${min}`);
 export default {
     name: 'APOD',
+    props: {
+        date: {
+            type: Date,
+            default: function () { return new Date() }
+        }
+    },
     data: () => ({
         result: null
     }),
     methods: {
         apodFetch() {
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getDate()
-            console.log(`Date: ${date}; Year: ${year}, Month: ${month}, Day: ${day}`);
+            let year = this.date.getFullYear();
+            let month = this.date.getMonth() + 1;
+            let day = this.date.getDate()
+            console.log(`Date: ${this.date}; Year: ${year}, Month: ${month}, Day: ${day}`);
          
             let url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
             console.log(`Url: ${url}`);
@@ -48,11 +59,15 @@ export default {
             console.log(this.result);
         },
         prev() {
-            date.setDate(date.getDate() - 1);
+            if( this.date.getDate() !== min.getDate() ){
+                this.date.setDate(this.date.getDate() - 1);
+            }
             this.apodFetch()   
         },
         next()  {
-            date.setDate(date.getDate() + 1);
+            if( this.date.getDate() !== max.getDate() ){
+               this.date.setDate(this.date.getDate() + 1);
+            }
             this.apodFetch();
         }
     }, 
@@ -65,5 +80,9 @@ export default {
 <style scoped>
 img{
     width: 85%;
+}
+button{
+    margin-left: 5px ;
+    margin-right: 5px ;
 }
 </style>
