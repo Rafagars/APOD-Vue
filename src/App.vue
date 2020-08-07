@@ -30,4 +30,5 @@ export default {
 body{
   background-image: url('assets/bg.jpg');
 }
+
 </style>

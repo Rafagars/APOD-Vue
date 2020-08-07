@@ -18,19 +18,16 @@ export default {
     data: () => ({
         months: months
     }),
-    props: {
-        year: Number
-    },
     methods: {
         setMonths(){
-            if (this.year == thisYear){
+            if (this.$route.params.year == thisYear){
                 this.months = Array.from(Array((date.getMonth()) + 1), (_, i) => i + 1) 
-
-            }else if (this.year == 1995 ){
+            }else if (this.$route.params.year == 1995 ){
                 this.months = Array.from(Array(12 - 5), (_, i) => i + 6) 
             } else {
                 this.months = Array.from(Array(12), (_, i) => i + 1)
             }
+            console.log(`Year: ${this.$route.params.year}`)
         }
     },
     created(){
@@ -52,5 +49,14 @@ export default {
     opacity: 0.9;
 	margin: 10px;
 	padding: 25px;
+}
+a, a:hover {
+    text-decoration: none;
+}
+a{
+    color: white;
+}
+a:hover {
+    color: gray;
 }
 </style>
