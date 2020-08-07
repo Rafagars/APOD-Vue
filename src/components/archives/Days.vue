@@ -5,7 +5,7 @@
             <div class="flex" v-for="(day, i) in days" :key=i>
                 <router-link :to="{ 
                     path: '/archives/' + $route.params.year + '/' + $route.params.month + '/' + day,
-                    params: {date: new Date($route.params.year + '-' + $route.params.month + '-' + day)} }">
+                    query: {date: $route.params.year + '-' + $route.params.month + '-' + (day + 1) } }">
                     <h3>{{day}}</h3>
                 </router-link>
             </div>
@@ -22,6 +22,7 @@ export default {
     name: 'Months',
     data: () => ({
         days: days,
+        date: date
        
     }),
     methods: {

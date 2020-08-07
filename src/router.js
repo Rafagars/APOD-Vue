@@ -34,7 +34,11 @@ const routes = [
     path: "/archives/:year/:month/:day",
     name: "APOD",
     component: APOD,
-    props: true
+    props(route){
+      return {
+        date: new Date(route.query.date)
+      }
+    }
   },
   {
     path: "/random",

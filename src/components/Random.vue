@@ -1,5 +1,7 @@
 <template>    
-    <APOD  :date="new Date(result[0].date)" />
+    <div v-if="result">
+        <APOD  :date="new Date(result[0].date)" />
+    </div>
 </template>
 <script>
 import axios from "axios";
