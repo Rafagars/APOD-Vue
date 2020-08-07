@@ -5,7 +5,7 @@
             <div class="flex" v-for="(month, i) in months" :key=i>
                 <router-link :to="{ path: '/archives/' + $route.params.year + '/' + month }">
                     <h3>{{month}}</h3>
-                    <h4>{{monthsName[i]}}</h4>
+                    <h4>{{monthsName[month - 1]}}</h4>
                 </router-link>
             </div>
         </div>

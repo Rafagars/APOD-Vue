@@ -5,6 +5,7 @@ import APOD from "./components/APOD.vue";
 import Years from "./components/archives/Years.vue";
 import Months from "./components/archives/Months.vue";
 import Days from "./components/archives/Days.vue";
+import ArchivesAPOD from "./components/archives/ArchivesAPOD.vue";
 import Random from "./components/Random.vue";
 
 Vue.use(VueRouter)
@@ -32,13 +33,8 @@ const routes = [
   },
   {
     path: "/archives/:year/:month/:day",
-    name: "APOD",
-    component: APOD,
-    props(route){
-      return {
-        date: new Date(route.query.date)
-      }
-    }
+    name: "ArchivesAPOD",
+    component: ArchivesAPOD
   },
   {
     path: "/random",

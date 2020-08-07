@@ -3,9 +3,7 @@
         <h1>Archives - {{$route.params.month}}/{{$route.params.year}}</h1>
         <div class="flexs">
             <div class="flex" v-for="(day, i) in days" :key=i>
-                <router-link :to="{ 
-                    path: '/archives/' + $route.params.year + '/' + $route.params.month + '/' + day,
-                    query: {date: $route.params.year + '-' + $route.params.month + '-' + (day + 1) } }">
+                <router-link :to="{ path: '/archives/' + $route.params.year + '/' + $route.params.month + '/' + day }">
                     <h3>{{day}}</h3>
                 </router-link>
             </div>
@@ -16,13 +14,12 @@
 <script>
 const date = new Date();
 const thisYear = date.getFullYear();
-let days = []
+const days = []
 
 export default {
     name: 'Months',
     data: () => ({
-        days: days,
-        date: date
+        days: days
        
     }),
     methods: {
@@ -31,18 +28,19 @@ export default {
             numOfDays = parseInt(numOfDays.toString())
             console.log(numOfDays);
             if(this.$route.params.year == 1995 && this.$route.params.month == 6){
-                days = Array.from(Array(11), (_, i) => i + 20);
+                this.days = Array.from(Array(11), (_, i) => i + 20);
                 console.log("1995")
             } else if(this.$route.params.year == thisYear && this.$route.params.month == (date.getMonth() + 1)) {
-                days = days = Array.from(Array(date.getDate()), (_, i) => i + 1);
+                this.days = Array.from(Array(date.getDate()), (_, i) => i + 1);
                 console.log(`${thisYear}`)
             } else {
-                days = Array.from(Array(numOfDays), (_, i) => i + 1);
+                this.days = Array.from(Array(numOfDays), (_, i) => i + 1);
                 console.log("Other")
             }
+            console.log(`Year: ${this.$route.params.year} Month: ${this.$route.params.month}`)
         }
     },
-    created(){
+    mounted(){
         this.setDays();
     }
 }

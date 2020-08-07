@@ -31,7 +31,6 @@ import axios from "axios";
 const max = new Date();
 console.log(`Max: ${max}`);
 const min = new Date('1995-06-20');
-console.log(`Max: ${max}`);
 console.log(`Min: ${min}`);
 export default {
     name: 'APOD',
