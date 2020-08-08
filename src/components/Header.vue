@@ -5,6 +5,9 @@
             <router-link to="/" class="nav-link nav-item">Home</router-link>
             <router-link to="/archives" class="nav-link nav-item">Archives</router-link>
             <router-link to="/random" class="nav-link nav-item">Random</router-link>
+            <form action="/search">
+                <input type="text" name="q" placeholder="Search..." class="form-control">
+            </form>
         </header>
     </div>
 </template>
@@ -17,7 +20,7 @@ export default {
 
 <style scoped>
 #logo-img {
-    width: 25%;
+    width: 100px;
 }
 a, a:hover {
     text-decoration: none;

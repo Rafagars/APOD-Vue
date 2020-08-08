@@ -6,6 +6,7 @@ import Years from "./components/archives/Years.vue";
 import Months from "./components/archives/Months.vue";
 import Days from "./components/archives/Days.vue";
 import ArchivesAPOD from "./components/archives/ArchivesAPOD.vue";
+import Search from "./components/search/Search.vue";
 import Random from "./components/Random.vue";
 
 Vue.use(VueRouter)
@@ -35,6 +36,12 @@ const routes = [
     path: "/archives/:year/:month/:day",
     name: "ArchivesAPOD",
     component: ArchivesAPOD
+  },
+  {
+    path: "/search",
+    name: "Searh",
+    component: Search,
+    props: (route) => ({ query: route.query.q })
   },
   {
     path: "/random",
