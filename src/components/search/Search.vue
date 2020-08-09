@@ -82,12 +82,12 @@ a:hover{
 }
 
 .search-flex {
-	flex: 1 0 20%;
+	flex: 1 0 48%;
 	margin: 10px;
-    padding: 25px;
+
 }
 .search-flex img{
-    width: 65%;
+    width: 45%;
 }
 
 </style>
