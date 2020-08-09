@@ -3,7 +3,7 @@
         <h1>Search: {{$route.query.q}} </h1>
         <div v-if="result" class="flexs">
             <div v-for="(item, i) in result" :key=i class="search-flex">
-                <a href="" @click="redirect(item.date)" ><h2>{{item.title}}</h2></a>
+                <router-link :to="'archives/' + transform(item.date)" ><h2>{{item.title}}</h2></router-link>
                 <h6>{{item.date}}</h6>
                 <div v-if="item.media_type === 'image'">
                     <a :href="item.url"><img :src="item.url" :alt="item.title" ></a>
@@ -57,9 +57,9 @@ export default {
             }
             this.searchFecth();
         },
-        redirect(date){
-            const apod = new Date(date)
-            this.$router.push({ path: `/archives/${apod.getFullYear()}/${apod.getMonth() + 1}/${apod.getDate()}` });
+        transform(date){
+            const apod = date.replace(/-/g, "/");
+            return (apod)
         }
     },
     created(){
