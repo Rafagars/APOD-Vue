@@ -15,7 +15,7 @@ const routes = [
   {
     path: "/",
     name: "APOD",
-    component: APOD
+    component: APOD,
   },
   {
     path: "/archives",
@@ -39,7 +39,7 @@ const routes = [
   },
   {
     path: "/search",
-    name: "Searh",
+    name: "Search",
     component: Search,
     props: (route) => ({ query: route.query.q })
   },

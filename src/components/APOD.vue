@@ -61,7 +61,7 @@ export default {
             if( this.date.getDate() !== min.getDate() ){
                 this.date.setDate(this.date.getDate() - 1);
             }
-            this.apodFetch()   
+            this.apodFetch();   
         },
         next()  {
             if( this.date.getDate() !== max.getDate() ){
