@@ -15,7 +15,7 @@ export default {
         date: null,
     }),
     created(){
-		this.date = `${this.$route.params.year}-${this.$route.params.month}-${this.$route.params.day}`
+		this.date = `${this.$route.params.year}-${this.$route.params.month}-${this.$route.params.day}`;
     }
 }
 </script>
