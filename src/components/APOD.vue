@@ -76,17 +76,17 @@ export default {
 </script>
 
 <style scoped>
-img{
-    width: 85%;
-}
 .flex{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: center;
 }
-.col-flex{
+.bg-transparent{
     font-size: 2em;
     color: white;
+}
+img{
+    width: 75%
 }
 
 </style>
