@@ -47,6 +47,11 @@ export default {
             let year = this.date.getFullYear();
             let month = this.date.getMonth() + 1;
             let day = this.date.getUTCDate();
+
+            if (this.date > max.getDate()){
+                day = max.getDate();
+            }
+
             console.log(`Date: ${this.date}; Year: ${year}, Month: ${month}, Day: ${day}`);
          
             let url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
