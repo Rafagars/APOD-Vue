@@ -28,9 +28,7 @@
 <script>
 import axios from "axios";
 const max = new Date();
-console.log(`Max: ${max}`);
 const min = new Date('1995-06-20');
-console.log(`Min: ${min}`);
 export default {
     name: 'APOD',
     props: {
@@ -48,28 +46,24 @@ export default {
             let month = this.date.getMonth() + 1;
             let day = this.date.getUTCDate();
 
-            if (this.date > max.getDate()){
-                day = max.getDate();
+            if (this.date > max){
+                day = max.getUTCDate();
+                console.log("Hello")
             }
-
-            console.log(`Date: ${this.date}; Year: ${year}, Month: ${month}, Day: ${day}`);
-         
             let url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
-            console.log(`Url: ${url}`);
             axios.get(url).then((result) => {
                 this.result = result.data;
             })
-            console.log(this.result);
         },
         prev() {
-            if( this.date.getDate() !== min.getDate() ){
-                this.date.setDate(this.date.getDate() - 1);
+            if( this.date.getUTCDate() !== min.getUTCDate() ){
+                this.date.setDate(this.date.getUTCDate() - 1);
             }
             this.apodFetch();   
         },
         next()  {
-            if( this.date.getDate() !== max.getDate() ){
-               this.date.setDate(this.date.getDate() + 1);
+            if( this.date.getUTCDate() !== max.getUTCDate() ){
+               this.date.setDate(this.date.getUTCDate() + 1);
             }
             this.apodFetch();
         }
