@@ -14,9 +14,9 @@
             </div>
         </div>
         <nav class="text-center">
-            <button class="btn btn-dark" @click="prev()">Prev</button>
+            <button class="btn btn-dark" @click="customButtons('prev')">Prev</button>
             <router-link to="/archives">Archives</router-link>
-            <button class="btn btn-dark" @click="next()">Next</button>
+            <button class="btn btn-dark" @click="customButtons('next')">Next</button>
         </nav>
     </div>
 </template>
@@ -47,15 +47,14 @@ export default {
             })
             console.log(this.result);
         },
-        next(){
-            this.page += 1;
-            this.searchFecth();
-        },
-        prev(){
-            if(this.page != 1){
+        customButtons(instruction){
+            if(instruction === 'next'){
+                this.page += 1;
+            } else if(instruction === 'prev' && this.page !== 1){
                 this.page -= 1;
             }
-            this.searchFecth();
+            this.$router.push({name: "Search", query: {q: this.query, page: this.page} });
+            location.reload();
         },
         transform(date){
             const apod = date.replace(/-/g, "/");
