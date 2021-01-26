@@ -42,28 +42,28 @@ export default {
     props: {
         date: {
             type: Date,
-            default: function () { return new Date() }
+            default: function () { return null }
         }
     },
     data: () => ({
         result: null
     }),
     methods: {
-        apodFetch(date) {
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getUTCDate();
-
-            if (date > max){
-                day = max.getUTCDate();
-                console.log("Hello")
+        apodFetch() {
+            let year, month, day;
+            let url = "https://apodapi.herokuapp.com/api/";
+            if (this.date !== null){
+                year = this.date.getFullYear();
+                month = this.date.getMonth() + 1;
+                day = this.date.getUTCDate();
+                url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
             }
-            let url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
             axios.get(url).then((result) => {
                 this.result = result.data;
             })
         },
         arrowButton(instruction) {
+            this.date = new Date(this.result.date);
             if( instruction === 'prev' && this.date.getUTCDate() !== min.getUTCDate() ){
                 this.date.setDate(this.date.getUTCDate() - 2);
             } else if(instruction === 'next' && this.date.getUTCDate() !== max.getUTCDate() ){
@@ -74,7 +74,7 @@ export default {
         },
     }, 
     created() {
-        this.apodFetch(this.date);
+        this.apodFetch();
     },
 }
 </script>
