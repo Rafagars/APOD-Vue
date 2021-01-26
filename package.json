@@ -10,13 +10,14 @@
     "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.1",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "vue": "^2.6.11",
-    "vue-router": "^3.4.0"
+    "vue-router": "^3.4.0",
+    "vue-share-buttons": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

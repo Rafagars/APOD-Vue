@@ -22,15 +22,23 @@
         <h6>{{result.copyright}}</h6>
         <br>
         <p class="container">{{result.description}}</p>
+        <twitter-button />
+        <facebook-button />
     </div>
 </template>
 
 <script>
+import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
+import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
 import axios from "axios";
 const max = new Date();
 const min = new Date('1995-06-20');
 export default {
     name: 'APOD',
+    components: {
+        TwitterButton,
+        FacebookButton
+    },
     props: {
         date: {
             type: Date,
