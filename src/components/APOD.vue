@@ -5,7 +5,7 @@
         <h2>{{result.title}}</h2>
         <h5>{{result.date}}</h5>
         <div class="flex">
-            <button id="prev" class="btn bg-transparent col-flex" @click="prev()"> &lt; </button>
+            <button id="prev" class="btn bg-transparent col-flex" @click="arrowButton('prev')"> &lt; </button>
             <div v-if="result.media_type === 'image'" class="col-flex">
                 <a :href=result.url >
                     <img :src=result.url :alt=result.title >
@@ -17,7 +17,7 @@
             <div v-else class="col-flex">
                 <a :href=result.apod_site > Click Here </a>
             </div>
-            <button id="next" class="btn bg-transparent col-flex" @click="next()"> &gt; </button>
+            <button id="next" class="btn bg-transparent col-flex" @click="arrowButton('next')"> &gt; </button>
         </div> 
         <h6>{{result.copyright}}</h6>
         <br>
@@ -41,12 +41,12 @@ export default {
         result: null
     }),
     methods: {
-        apodFetch() {
-            let year = this.date.getFullYear();
-            let month = this.date.getMonth() + 1;
-            let day = this.date.getUTCDate();
+        apodFetch(date) {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getUTCDate();
 
-            if (this.date > max){
+            if (date > max){
                 day = max.getUTCDate();
                 console.log("Hello")
             }
@@ -55,22 +55,19 @@ export default {
                 this.result = result.data;
             })
         },
-        prev() {
-            if( this.date.getUTCDate() !== min.getUTCDate() ){
-                this.date.setDate(this.date.getUTCDate() - 1);
+        arrowButton(instruction) {
+            if( instruction === 'prev' && this.date.getUTCDate() !== min.getUTCDate() ){
+                this.date.setDate(this.date.getUTCDate() - 2);
+            } else if(instruction === 'next' && this.date.getUTCDate() !== max.getUTCDate() ){
+               this.date.setDate(this.date.getUTCDate());
             }
-            this.apodFetch();   
+            this.$router.push({name: 'ArchivesAPOD', params: { year: this.date.getFullYear(), month: this.date.getMonth() + 1, day: this.date.getUTCDate()  }})
+            location.reload()   
         },
-        next()  {
-            if( this.date.getUTCDate() !== max.getUTCDate() ){
-               this.date.setDate(this.date.getUTCDate() + 1);
-            }
-            this.apodFetch();
-        }
     }, 
     created() {
-        this.apodFetch();
-    }
+        this.apodFetch(this.date);
+    },
 }
 </script>
 

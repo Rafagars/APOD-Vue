@@ -35,7 +35,7 @@ const routes = [
   {
     path: "/archives/:year/:month/:day",
     name: "ArchivesAPOD",
-    component: ArchivesAPOD
+    component: ArchivesAPOD,
   },
   {
     path: "/search",
