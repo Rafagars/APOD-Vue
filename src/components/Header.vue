@@ -5,9 +5,9 @@
             <router-link to="/" class="nav-link nav-item">Home</router-link>
             <router-link to="/archives" class="nav-link nav-item">Archives</router-link>
             <router-link to="/random" class="nav-link nav-item">Random</router-link>
-            <!-- <form action="/search" @submit="search" >
+            <form action="/search" @submit="search" >
                 <input id="searchForm"  type="text" name="q" placeholder="Search..." class="form-control">
-            </form> -->
+            </form>
         </header>
     </div>
 </template>
