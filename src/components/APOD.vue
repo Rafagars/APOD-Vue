@@ -28,17 +28,11 @@
 </template>
 
 <script>
-import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
-import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
 import axios from "axios";
 const max = new Date();
 const min = new Date('1995-06-20');
 export default {
     name: 'APOD',
-    components: {
-        TwitterButton,
-        FacebookButton
-    },
     props: {
         date: {
             type: Date,
