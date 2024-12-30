@@ -15,7 +15,7 @@ export default {
         result: null,
     }),
     created(){
-        axios.get("https://apodapi.herokuapp.com/api/?count=1").then((result) => {
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.VUE_APP_API}&count=1`).then((result) => {
             this.result = result.data;
         })
     }

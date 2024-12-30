@@ -21,7 +21,7 @@
         </div> 
         <h6>{{result.copyright}}</h6>
         <br>
-        <p class="container">{{result.description}}</p>
+        <p class="container">{{result.explanation}}</p>
         <twitter-button />
         <facebook-button />
     </div>
@@ -51,12 +51,12 @@ export default {
     methods: {
         apodFetch() {
             let year, month, day;
-            let url = "https://apodapi.herokuapp.com/api/";
+            let url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.VUE_APP_API}`;
             if (this.date !== null){
                 year = this.date.getFullYear();
                 month = this.date.getMonth() + 1;
                 day = this.date.getUTCDate();
-                url = `https://apodapi.herokuapp.com/api/?date=${year}-${month}-${day}`;
+                url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.VUE_APP_API}&date=${year}-${month}-${day}`;
             }
             axios.get(url).then((result) => {
                 this.result = result.data;
