@@ -46,7 +46,7 @@ export default {
         apodFetch() {
             let year = this.date.getFullYear();
             let month = this.date.getMonth() + 1;
-            let day = this.date.getUTCDate();
+            let day = this.date.getDate();
 
             if (this.date > max.getDate()){
                 day = max.getDate();
