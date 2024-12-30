@@ -88,5 +88,7 @@ export default {
 img{
     width: 75%
 }
-
+.container{
+    background-color: rgba(91, 91, 91, 0.5);
+}
 </style>
