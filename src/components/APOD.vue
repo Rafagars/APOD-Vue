@@ -36,7 +36,7 @@ export default {
     props: {
         date: {
             type: Date,
-            default: function () { return new Date() }
+            default: function () { return null }
         }
     },
     data: () => ({
