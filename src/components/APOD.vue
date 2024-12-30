@@ -5,7 +5,7 @@
         <h2>{{result.title}}</h2>
         <h5>{{result.date}}</h5>
         <div class="flex">
-            <button id="prev" class="btn bg-transparent col-flex" @click="prev()"> &lt; </button>
+            <button id="prev" class="btn bg-transparent col-flex" @click="arrowButton('prev')"> &lt; </button>
             <div v-if="result.media_type === 'image'" class="col-flex">
                 <a :href=result.url >
                     <img :src=result.url :alt=result.title >
@@ -17,9 +17,8 @@
             <div v-else class="col-flex">
                 <a :href=result.apod_site > Click Here </a>
             </div>
-            <button id="next" class="btn bg-transparent col-flex" @click="next()"> &gt; </button>
-        </div> 
-        <h6>{{result.copyright}}</h6>
+            <button id="next" class="btn bg-transparent col-flex" @click="arrowButton('next')"> &gt; </button>        </div> 
+        <h6>COPYRIGHT: {{result.copyright}}</h6>
         <br>
         <p class="container">{{result.explanation}}</p>
     </div>
@@ -28,9 +27,9 @@
 <script>
 import axios from "axios";
 const max = new Date();
-console.log(`Max: ${max}`);
+
 const min = new Date('1995-06-20');
-console.log(`Min: ${min}`);
+
 export default {
     name: 'APOD',
     props: {
