@@ -90,5 +90,7 @@ img{
 }
 .container{
     background-color: rgba(45, 45, 45, 0.65);
+    border: 10px solid#23272a;
+
 }
 </style>
