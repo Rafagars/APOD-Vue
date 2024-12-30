@@ -48,7 +48,7 @@ export default {
             let month = this.date.getMonth() + 1;
             let day = this.date.getUTCDate();
 
-            if (this.date.getDate() > max.getDate()){
+            if (this.date.getUTCDate() > max.getDate()){
                 day = max.getDate();
             }
 
