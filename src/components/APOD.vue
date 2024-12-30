@@ -56,18 +56,16 @@ export default {
                 this.result = result.data;
             })
         },
-        prev() {
-            if( this.date.getDate() !== min.getDate() ){
-                this.date.setDate(this.date.getDate() - 1);
+        arrowButton(instruction) {
+            this.date = new Date(this.result.date);
+            if( instruction === 'prev' && this.date.getUTCDate() !== min.getUTCDate() ){
+                this.date.setDate(this.date.getUTCDate() - 2);
+            } else if(instruction === 'next' && this.date.getUTCDate() !== max.getUTCDate() ){
+               this.date.setDate(this.date.getUTCDate());
             }
-            this.apodFetch();   
+            this.$router.push({name: 'ArchivesAPOD', params: { year: this.date.getFullYear(), month: this.date.getMonth() + 1, day: this.date.getUTCDate()  }})
+            location.reload()   
         },
-        next()  {
-            if( this.date.getDate() !== max.getDate() ){
-               this.date.setDate(this.date.getDate() + 1);
-            }
-            this.apodFetch();
-        }
     }, 
     created() {
         this.apodFetch();
