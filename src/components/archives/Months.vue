@@ -33,7 +33,7 @@ export default {
             } else {
                 this.months = Array.from(Array(12), (_, i) => i + 1)
             }
-            console.log(`Year: ${this.$route.params.year}`)
+            /* console.log(`Year: ${this.$route.params.year}`) */
         }
     },
     created(){

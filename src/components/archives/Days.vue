@@ -37,7 +37,7 @@ export default {
                 this.days = Array.from(Array(numOfDays), (_, i) => i + 1);
                 console.log("Other")
             }
-            console.log(`Year: ${this.$route.params.year} Month: ${this.$route.params.month}`)
+            /* console.log(`Year: ${this.$route.params.year} Month: ${this.$route.params.month}`) */
         }
     },
     mounted(){

@@ -55,7 +55,7 @@ export default {
             console.log(`Date: ${this.date}; Year: ${year}, Month: ${month}, Day: ${day}`);
          
             let url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.VUE_APP_API}&date=${year}-${month}-${day}`;
-            console.log(`Url: ${url}`);
+            /* console.log(`Url: ${url}`); */
             axios.get(url).then((result) => {
                 this.result = result.data;
             })
