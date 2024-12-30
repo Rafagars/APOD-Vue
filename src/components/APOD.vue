@@ -57,10 +57,10 @@ export default {
         },
         arrowButton(instruction) {
             this.date = new Date(this.result.date);
-            if( instruction === 'prev' && this.date.getUTCDate() !== min.getUTCDate() ){
-                this.date.setDate(this.date.getUTCDate() - 1);
-            } else if(instruction === 'next' && this.date.getUTCDate() !== max.getUTCDate() ){
-               this.date.setDate(this.date.getUTCDate() + 1);
+            if( instruction === 'prev' && this.date.getDate() !== min.getDate() ){
+                this.date.setDate(this.date.getDate() - 1);
+            } else if(instruction === 'next' && this.date.getDate() !== max.getDate() ){
+               this.date.setDate(this.date.getDate() + 1);
             }
             this.$router.push({name: 'ArchivesAPOD', params: { year: this.date.getFullYear(), month: this.date.getMonth() + 1, day: this.date.getUTCDate()  }})
             location.reload()   
@@ -88,6 +88,6 @@ img{
 .container{
     background-color: rgba(45, 45, 45, 0.65);
     border: 10px solid#23272a;
-
+    padding: 15px;
 }
 </style>
