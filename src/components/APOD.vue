@@ -58,9 +58,9 @@ export default {
         arrowButton(instruction) {
             this.date = new Date(this.result.date);
             if( instruction === 'prev' && this.date.getUTCDate() !== min.getUTCDate() ){
-                this.date.setDate(this.date.getUTCDate() - 2);
+                this.date.setDate(this.date.getUTCDate() - 1);
             } else if(instruction === 'next' && this.date.getUTCDate() !== max.getUTCDate() ){
-               this.date.setDate(this.date.getUTCDate());
+               this.date.setDate(this.date.getUTCDate() + 1);
             }
             this.$router.push({name: 'ArchivesAPOD', params: { year: this.date.getFullYear(), month: this.date.getMonth() + 1, day: this.date.getUTCDate()  }})
             location.reload()   
