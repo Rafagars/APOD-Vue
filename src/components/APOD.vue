@@ -18,7 +18,7 @@
                 <a :href=result.apod_site > Click Here </a>
             </div>
             <button id="next" class="btn bg-transparent col-flex" @click="arrowButton('next')"> &gt; </button>        </div> 
-        <h6>COPYRIGHT: {{result.copyright}}</h6>
+        <h6>{{result.copyright}}</h6>
         <br>
         <p class="container">{{result.explanation}}</p>
     </div>
