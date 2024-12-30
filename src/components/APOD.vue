@@ -21,7 +21,7 @@
         </div> 
         <h6>{{result.copyright}}</h6>
         <br>
-        <p class="container">{{result.description}}</p>
+        <p class="container">{{result.explanation}}</p>
     </div>
 </template>
 
@@ -47,8 +47,9 @@ export default {
             let year = this.date.getFullYear();
             let month = this.date.getMonth() + 1;
             let day = this.date.getUTCDate();
-
-            if (day > max.getDate()){
+            
+            
+            if (this.date > max){
                 day = max.getDate();
             }
 
